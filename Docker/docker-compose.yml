@@ -1,0 +1,26 @@
+version: "3.7"
+volumes:
+  condominiumpsql:
+  condominium:
+services:
+  postgres:
+    image: postgres
+    container_name: condominiumpsql
+    volumes:
+      - condominiumpsql:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=qwerty007
+      - POSTGRES_DB=bookstorage-api
+  web:
+    container_name: bookstorage-api
+    volumes:
+      - condominium:/images
+    build: .
+    ports:
+      - 8080:8080
+    environment:
+      - DB_URL=jdbc:postgresql://postgres:5432/
+      - DB_USER=postgres
+      - DB_PSWD=qwerty007
+      - AWS_SECRET_KEY=T4Xt5dBn834Zp8az9qXMB1GzwhIpCmuhnTElJdZs
+      - AWS_SECRET_ID=2U4u2peRhfjoV8j0dQzC
