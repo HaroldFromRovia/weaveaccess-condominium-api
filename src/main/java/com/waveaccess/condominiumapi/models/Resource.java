@@ -1,5 +1,7 @@
 package com.waveaccess.condominiumapi.models;
 
+import com.waveaccess.condominiumapi.models.enums.Classification;
+import com.waveaccess.condominiumapi.models.enums.Pricing;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

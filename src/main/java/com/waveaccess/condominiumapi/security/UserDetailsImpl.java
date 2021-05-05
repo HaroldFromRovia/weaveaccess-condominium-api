@@ -1,6 +1,6 @@
 package com.waveaccess.condominiumapi.security;
 
-import com.waveaccess.condominiumapi.models.Role;
+import com.waveaccess.condominiumapi.models.enums.Role;
 import com.waveaccess.condominiumapi.models.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

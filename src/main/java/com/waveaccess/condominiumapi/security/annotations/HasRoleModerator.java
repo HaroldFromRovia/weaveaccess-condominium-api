@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@PreAuthorize("hasAuthority(T(com.waveaccess.condominiumapi.models.Role).MODERATOR.name())")
+@PreAuthorize("hasAuthority(T(com.waveaccess.condominiumapi.models.enums.Role).MODERATOR)")
 public @interface HasRoleModerator{
 }
 

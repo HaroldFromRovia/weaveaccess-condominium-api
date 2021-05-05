@@ -3,6 +3,7 @@ package com.waveaccess.condominiumapi.controllers.moderator;
 import com.waveaccess.condominiumapi.controllers.client.AuthController;
 import com.waveaccess.condominiumapi.dto.UserDto;
 import com.waveaccess.condominiumapi.mappers.UserMapper;
+import com.waveaccess.condominiumapi.models.User;
 import com.waveaccess.condominiumapi.security.annotations.HasRoleModerator;
 import com.waveaccess.condominiumapi.security.annotations.PermitAll;
 import com.waveaccess.condominiumapi.services.interfaces.UserService;
@@ -13,17 +14,19 @@ import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import static javax.servlet.http.HttpServletResponse.SC_BAD_REQUEST;
 import static javax.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
 
-@HasRoleModerator
 @Api("Moderating")
 @RestController
 @RequiredArgsConstructor
+@PreAuthorize("hasRole('MODERATOR')")
 @RequestMapping(ClientModeController.ROOT_URL)
 public class ClientModeController {
 
@@ -47,5 +50,11 @@ public class ClientModeController {
     @GetMapping(PAGE_URL)
     public Page<UserDto> getInactivePage(Pageable pageable) {
         return userService.getPage(pageable).map(userMapper::userToUserDto);
+    }
+
+    @ApiOperation("Set user as active")
+    @PostMapping
+    public User setUserAsActive(Long id) {
+        return userService.setActive(id);
     }
 }

@@ -1,6 +1,6 @@
 package com.waveaccess.condominiumapi.dto;
 
-import com.waveaccess.condominiumapi.models.Role;
+import com.waveaccess.condominiumapi.models.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

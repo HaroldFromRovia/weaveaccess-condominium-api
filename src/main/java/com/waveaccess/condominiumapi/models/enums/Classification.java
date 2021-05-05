@@ -1,4 +1,4 @@
-package com.waveaccess.condominiumapi.models;
+package com.waveaccess.condominiumapi.models.enums;
 
 public enum Classification {
     OBJECT, SERVICE

@@ -3,7 +3,7 @@ package com.waveaccess.condominiumapi.services.implementations;
 import com.waveaccess.condominiumapi.dto.forms.LoginForm;
 import com.waveaccess.condominiumapi.dto.forms.SignUpForm;
 import com.waveaccess.condominiumapi.mappers.UserMapper;
-import com.waveaccess.condominiumapi.models.Role;
+import com.waveaccess.condominiumapi.models.enums.Role;
 import com.waveaccess.condominiumapi.models.User;
 import com.waveaccess.condominiumapi.repositories.UserRepository;
 import com.waveaccess.condominiumapi.services.interfaces.AuthClientService;

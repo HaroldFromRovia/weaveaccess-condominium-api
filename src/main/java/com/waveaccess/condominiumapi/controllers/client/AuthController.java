@@ -51,8 +51,18 @@ public class AuthController {
     }
 
     @ApiOperation("Login")
-    @ApiResponses({@ApiResponse(code = 200, message = "", response = Authentication.class)})
+    @ApiResponses({
+            @ApiResponse(
+                    code = 200,
+                    message = "",
+                    response = Authentication.class),
+            @ApiResponse(
+                    code = 405,
+                    message = "User is not enabled",
+                    response = Authentication.class)})
     @PostMapping(LOGIN_URL)
-    public UserDto login(LoginForm form){throw new IllegalStateException("Method never called");}
+    public UserDto login(LoginForm form) {
+        throw new IllegalStateException("Method never called");
+    }
 
 }

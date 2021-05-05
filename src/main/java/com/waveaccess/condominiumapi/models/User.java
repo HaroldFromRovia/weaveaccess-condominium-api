@@ -1,11 +1,10 @@
 package com.waveaccess.condominiumapi.models;
 
+import com.waveaccess.condominiumapi.models.enums.Role;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Objects;
-import java.util.StringJoiner;
 
 @Entity
 @Table(name = "users")
@@ -21,7 +20,7 @@ public class User {
     @Column(nullable = false)
     private String passwordHash;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
     @Column(nullable = false)
     private String name;
