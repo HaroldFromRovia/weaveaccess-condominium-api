@@ -1,4 +1,4 @@
-package com.waveaccess.condominiumapi.mappers;
+package com.waveaccess.condominiumapi.mappers.base;
 
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.Named;

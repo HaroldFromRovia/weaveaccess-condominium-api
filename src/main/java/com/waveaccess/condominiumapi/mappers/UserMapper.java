@@ -2,6 +2,8 @@ package com.waveaccess.condominiumapi.mappers;
 
 import com.waveaccess.condominiumapi.dto.UserDto;
 import com.waveaccess.condominiumapi.dto.forms.SignUpForm;
+import com.waveaccess.condominiumapi.mappers.base.FileMapper;
+import com.waveaccess.condominiumapi.mappers.base.PasswordMapper;
 import com.waveaccess.condominiumapi.models.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -10,11 +12,11 @@ import org.mapstruct.Mapping;
 public interface UserMapper {
 
     @Mapping(source = "imagePath", target = "image", qualifiedByName = "map-url")
-    UserDto userToUserDto(User user);
+    UserDto userToDto(User user);
 
     User userDtoToUser(UserDto userDto);
 
     @Mapping(source = "password", target="passwordHash", qualifiedByName = "pass-hash")
-    User userFormToUser(SignUpForm signUpForm);
+    User formToUser(SignUpForm signUpForm);
 
 }

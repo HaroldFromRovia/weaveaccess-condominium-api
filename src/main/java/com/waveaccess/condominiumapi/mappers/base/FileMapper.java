@@ -1,4 +1,4 @@
-package com.waveaccess.condominiumapi.mappers;
+package com.waveaccess.condominiumapi.mappers.base;
 
 import org.mapstruct.Named;
 import org.springframework.beans.factory.annotation.Value;

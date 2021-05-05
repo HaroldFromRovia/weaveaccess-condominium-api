@@ -1,11 +1,8 @@
 package com.waveaccess.condominiumapi.controllers.moderator;
 
-import com.waveaccess.condominiumapi.controllers.client.AuthController;
 import com.waveaccess.condominiumapi.dto.UserDto;
 import com.waveaccess.condominiumapi.mappers.UserMapper;
 import com.waveaccess.condominiumapi.models.User;
-import com.waveaccess.condominiumapi.security.annotations.HasRoleModerator;
-import com.waveaccess.condominiumapi.security.annotations.PermitAll;
 import com.waveaccess.condominiumapi.services.interfaces.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,8 +24,8 @@ import static javax.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
 @RestController
 @RequiredArgsConstructor
 @PreAuthorize("hasRole('MODERATOR')")
-@RequestMapping(ClientModeController.ROOT_URL)
-public class ClientModeController {
+@RequestMapping(ClientModerationController.ROOT_URL)
+public class ClientModerationController {
 
     public static final String ROOT_URL = "/v1/moder/";
     public static final String PAGE_URL = "/page";
@@ -49,7 +46,7 @@ public class ClientModeController {
     })
     @GetMapping(PAGE_URL)
     public Page<UserDto> getInactivePage(Pageable pageable) {
-        return userService.getPage(pageable).map(userMapper::userToUserDto);
+        return userService.getPage(pageable).map(userMapper::userToDto);
     }
 
     @ApiOperation("Set user as active")

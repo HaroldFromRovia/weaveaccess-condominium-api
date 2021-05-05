@@ -25,7 +25,7 @@ public class AuthClientServiceImpl implements AuthClientService {
         if (userRepository.findByEmail(signUpForm.getEmail()).isPresent())
             throw new BadCredentialsException("user-exists");
 
-        var user = userMapper.userFormToUser(signUpForm);
+        var user = userMapper.formToUser(signUpForm);
         user.setRole(Role.CLIENT);
         user.setIsEnabled(false);
 
