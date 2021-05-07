@@ -6,8 +6,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.Instant;
+import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -24,13 +28,17 @@ public class Resource {
     private String description;
     private String imagePath;
     private String rules;
-    private String workOurs;
     private Integer price;
+
+    private LocalTime startTime;
+    private LocalTime endTime;
 
     @Enumerated(EnumType.STRING)
     private Pricing pricing;
     @Enumerated(EnumType.STRING)
     private Classification classification;
 
+    @OneToMany
+    private List<Reservation> reservation;
 
 }
