@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -33,6 +34,10 @@ public class User {
     private Date birthDate;
     private Integer housingNumber;
     private Integer flatNumber;
+
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<Reservation> reserved;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)

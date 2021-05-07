@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface UserRepository extends PagingAndSortingRepository<User, Long> {
 
-    Optional<User> findByEmail(String email);
+    Optional<User> findByEmailIgnoreCase(String email);
 
     Page<User> findAllByIsEnabled(Pageable pageable, Boolean isEnabled);
 

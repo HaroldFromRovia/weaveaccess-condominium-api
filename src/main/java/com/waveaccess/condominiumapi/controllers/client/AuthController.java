@@ -12,9 +12,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static javax.servlet.http.HttpServletResponse.SC_BAD_REQUEST;
 import static javax.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
@@ -32,8 +30,9 @@ public class AuthController {
     private final AuthClientService authService;
     private final UserMapper mapper;
 
-    @PostMapping(REGISTER_URL)
-    public UserDto register(SignUpForm form) {
+    @RequestMapping(path = REGISTER_URL, method = RequestMethod.POST,
+            consumes = {"multipart/form-data"}, produces = "application/json")
+    public UserDto register(@ModelAttribute SignUpForm form) {
         return mapper.userToDto(authService.signUp(form));
     }
 

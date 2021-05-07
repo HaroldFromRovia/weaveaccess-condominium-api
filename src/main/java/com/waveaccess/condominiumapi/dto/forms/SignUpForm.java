@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 
@@ -18,7 +19,7 @@ public class SignUpForm {
     private String password;
     private String name;
     private String surname;
-    private String imagePath;
+    private MultipartFile image;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date birthDate;

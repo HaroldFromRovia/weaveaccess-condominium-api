@@ -14,7 +14,7 @@ public interface UserMapper {
     @Mapping(source = "imagePath", target = "image", qualifiedByName = "map-url")
     UserDto userToDto(User user);
 
-    User userDtoToUser(UserDto userDto);
+    User dtoToUser(UserDto userDto);
 
     @Mapping(source = "password", target="passwordHash", qualifiedByName = "pass-hash")
     User formToUser(SignUpForm signUpForm);

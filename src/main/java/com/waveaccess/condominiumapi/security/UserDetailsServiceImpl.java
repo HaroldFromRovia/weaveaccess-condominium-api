@@ -24,7 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if(!email.trim().equals(email)) {
             throw new UsernameNotFoundException("Unacceptable login format.");
         }
-        Optional<User> userOptional = userRepository.findByEmail(email);
+        Optional<User> userOptional = userRepository.findByEmailIgnoreCase(email);
         if(userOptional.isPresent()) {
             User user = userOptional.get();
             return new UserDetailsImpl(user);
