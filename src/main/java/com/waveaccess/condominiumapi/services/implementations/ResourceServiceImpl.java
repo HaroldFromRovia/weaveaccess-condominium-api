@@ -104,8 +104,7 @@ public class ResourceServiceImpl implements ResourceService {
 
 
             for (Reservation reservation : sorted) {
-                if (Duration.between(startTime, reservation.getStartTime()).getSeconds() > 0 &&
-                        Duration.between(startTime, reservation.getStartTime()).getSeconds() > 0) {
+                if (Duration.between(startTime, reservation.getStartTime()).getSeconds() > 0) {
                     timesList.add(startTime + "-" + endTime);
                 }
                 startTime = reservation.getStartTime();
