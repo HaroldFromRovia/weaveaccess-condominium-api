@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @Api
@@ -28,8 +30,7 @@ public class ResourceController {
     public static final String ROOT_URL = "/v1";
     public static final String GET_PAGE_URL = "/resources";
     public static final String GET_OBJECTS_URL = "/objects";
-    public static final String GET_PAGE_BETWEEN = "/resources/between";
-    public static final String GET_PAGE_AVAILABLE_BETWEEN = "/resourcesAvailable/between";
+    public static final String GET_PAGE_AVAILABLE_BETWEEN = "/resourcesAvailable";
 
     private final ResourceService resourceService;
     private final ResourceMapper resourceMapper;
@@ -45,11 +46,9 @@ public class ResourceController {
     }
 
     @GetMapping(GET_PAGE_AVAILABLE_BETWEEN)
-    public Page<Map<Resource, String>> getResourcesAvailableBetween(
-            @RequestParam LocalDateTime startTime,
-            @RequestParam LocalDateTime endTime,
+    public Map<Long, List<String>> getAvailableForDate(
+            @RequestParam Date date,
             Pageable pageable) {
-        return resourceService.getAvailableResourcesBetween(DateTimeUtils.convert(startTime),
-                DateTimeUtils.convert(endTime), pageable);
+        return resourceService.getAvailableForDate(date, pageable);
     }
 }

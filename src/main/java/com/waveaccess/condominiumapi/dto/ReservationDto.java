@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
+import java.time.LocalTime;
 
 @Data
 @Builder
@@ -13,8 +14,8 @@ import java.time.Instant;
 @AllArgsConstructor
 public class ReservationDto {
 
-    private Instant startTime;
-    private Instant endTime;
+    private LocalTime startTime;
+    private LocalTime endTime;
     private Long resourceId;
     private Long userId;
 

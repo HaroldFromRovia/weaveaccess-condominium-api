@@ -12,6 +12,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 import springfox.documentation.annotations.ApiIgnore;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalTime;
 
 @Data
@@ -23,6 +25,7 @@ public class ResourceForm {
     private String location;
     private String description;
     private String rules;
+    @NotBlank
     private Integer price;
 
     @JsonIgnore
@@ -32,9 +35,12 @@ public class ResourceForm {
     @ApiModelProperty(hidden = true)
     private LocalTime endTime;
 
+    @NotNull
     private MultipartFile image;
 
+    @NotBlank
     private Pricing pricing;
+    @NotBlank
     private Classification classification;
 
 }

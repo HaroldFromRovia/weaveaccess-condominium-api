@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.time.LocalTime;
+import java.util.Date;
 
 @Entity
 @NoArgsConstructor
@@ -17,12 +19,14 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Instant startTime;
-    private Instant endTime;
+    private LocalTime startTime;
+    private LocalTime endTime;
+    private Date reservationDate;
 
     @ManyToOne
+    @JoinColumn(name = "resource_id")
     private Resource resource;
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
-
 }

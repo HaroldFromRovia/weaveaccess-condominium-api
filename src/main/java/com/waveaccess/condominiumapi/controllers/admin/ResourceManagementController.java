@@ -43,7 +43,7 @@ public class ResourceManagementController {
 
     @RequestMapping(path = CREATE_RESOURCE_URL, method = RequestMethod.POST,
             consumes = {"multipart/form-data"}, produces = "application/json")
-    public ResourceDto create(ResourceForm resourceForm,
+    public ResourceDto create(@ModelAttribute ResourceForm resourceForm,
                               @RequestParam LocalTime startTime, @RequestParam LocalTime endTime) {
         resourceForm.setStartTime(startTime);
         resourceForm.setEndTime(endTime);

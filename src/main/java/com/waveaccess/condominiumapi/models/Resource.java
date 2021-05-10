@@ -38,7 +38,7 @@ public class Resource {
     @Enumerated(EnumType.STRING)
     private Classification classification;
 
-    @OneToMany
+    @OneToMany(mappedBy = "resource")
     private List<Reservation> reservation;
 
 }

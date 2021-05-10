@@ -1,17 +1,14 @@
 package com.waveaccess.condominiumapi.dto.forms;
 
-import com.waveaccess.condominiumapi.models.Resource;
-import com.waveaccess.condominiumapi.models.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 import java.time.Instant;
+import java.time.LocalTime;
+import java.util.Date;
 
 @Data
 @Builder
@@ -19,8 +16,13 @@ import java.time.Instant;
 @AllArgsConstructor
 public class ReservationForm {
 
-    private Instant startTime;
-    private Instant endTime;
+    @NotNull
+    private LocalTime startTime;
+    @NotNull
+    private LocalTime endTime;
+    @NotNull
+    private Date reservationDate;
+    @NotNull
     private Long resourceId;
 
 }

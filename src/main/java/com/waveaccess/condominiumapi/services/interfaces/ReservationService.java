@@ -7,7 +7,10 @@ import com.waveaccess.condominiumapi.models.Resource;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.Instant;
+import java.time.LocalTime;
 
 public interface ReservationService {
-    ReservationDto reserve(Long resourceId, ReservationForm reservation, UserDetails userDetails);
+    ReservationDto reserve(ReservationForm reservation, UserDetails userDetails, LocalTime startTime, LocalTime endTime);
+
+    Boolean isAvailable(Resource resource, LocalTime startTime, LocalTime endTime);
 }
